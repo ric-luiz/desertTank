@@ -5,23 +5,24 @@ public class Tiro : MonoBehaviour {
     public GameObject tiro;
     private Rigidbody rbTiro;   //RigidBody do Tiro
     public int ImpulsoTiro;     //Forca instantanea que será aplicada no tiro
-    public GameObject explosao;    
+    public GameObject explosao;
+    //Usado para os intervalos entre um tiro e outro
+    private double fireRate;    //Variavel para contar o tempo
+    public int timeFire;        //Quantos segundos entre um tiro e outro
 
     void Start() {
         rbTiro = tiro.GetComponent<Rigidbody>();
     }
-
-    void Update() {
         
-    }
-    
 	void FixedUpdate () {
         atingiu();
-        if (Input.GetMouseButtonDown(0))
+        fireRate += Time.deltaTime;
+        if (Input.GetMouseButtonDown(0) && timeFire < fireRate)
         {
             tiro.SetActive(true);
-            Atirar();            
-        }                
+            Atirar();
+            fireRate = 0;
+        }                             
     }
 
     //Posicionar o tiro corretamente e Atirar!
