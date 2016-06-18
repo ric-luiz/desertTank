@@ -1,5 +1,5 @@
 # desertTank
-Projeto para aprendizado pratico de desenvolvimento de Jogos.
+Projeto para aprendizado pratico de desenvolvimento de Jogos com Unity 5.
 # Participantes da equipe
 Ricardo Luiz - Programador  
 Yuri Jordan  - Sound Design  
