@@ -5,4 +5,4 @@ Ricardo Luiz - Programador
 Yuri Jordan  - Sound Design  
 Gerd Aguiar  - Modelador/Ilustrador  
 André Lira   - Programador  
-Hugo Pablo   - Game Desing  
+Hugo Pablo   - Game Design  
