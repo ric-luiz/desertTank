@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tiro : MonoBehaviour {
     public GameObject tiro;
-    private Rigidbody rbTiro;   //RigidBody do Tiro
+    private Rigidbody rbTiro;   //RigidBody do Tiro    
     public int ImpulsoTiro;     //Forca instantanea que será aplicada no tiro
     public GameObject explosao;
     //Usado para os intervalos entre um tiro e outro
@@ -11,10 +11,12 @@ public class Tiro : MonoBehaviour {
     public int timeFire;        //Quantos segundos entre um tiro e outro
 
     void Start() {
-        rbTiro = tiro.GetComponent<Rigidbody>();
+        tiro = Instantiate(tiro, transform.position, transform.rotation) as GameObject;
+        tiro.SetActive(false);
+        rbTiro = tiro.GetComponent<Rigidbody>();        
     }
         
-	void FixedUpdate () {
+	void FixedUpdate () {        
         atingiu();
         fireRate += Time.deltaTime;
         if (Input.GetMouseButtonDown(0) && timeFire < fireRate)
@@ -39,12 +41,12 @@ public class Tiro : MonoBehaviour {
     }
 
     void atingiu() {
-        if (TiroColisao.getColidiu()) {            
-            TiroColisao.setColidiu(false);            
+        if (tiro.GetComponent<TiroColisao>().getColidiu()) {
+            tiro.GetComponent<TiroColisao>().setColidiu(false);            
             tiro.SetActive(false);           
             Instantiate(explosao, 
-                        TiroColisao.getTransformColisao().position, 
-                        TiroColisao.getTransformColisao().rotation);
+                        tiro.transform.position, 
+                        tiro.transform.rotation);
         }
     }
 }

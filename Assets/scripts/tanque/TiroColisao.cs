@@ -16,15 +16,11 @@ public class TiroColisao : MonoBehaviour {
         Colidiu = true;
     }
 
-    public static bool getColidiu() {
+    public bool getColidiu() {
         return Colidiu;
     }
 
-    public static void setColidiu(bool estadoColisao) {
+    public void setColidiu(bool estadoColisao) {
         Colidiu = estadoColisao;
-    }
-
-    public static Transform getTransformColisao() {
-        return posicaoColisao;
     }
 }
