@@ -1,47 +1,15 @@
 fileFormatVersion: 2
-guid: 3a1e157ef4b2c264cbbd6ee40e2f3584
-timeCreated: 1463794020
+guid: b11ea75c40c552b4792e69fdaf8a91e8
+timeCreated: 1466536497
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: basecanhao
-    100002: canhao
-    100004: corpo
-    100006: pneus01
-    100008: pneus02
-    100010: rodasLeft
-    100012: rodasRight
-    100014: //RootNode
-    400000: basecanhao
-    400002: canhao
-    400004: corpo
-    400006: pneus01
-    400008: pneus02
-    400010: rodasLeft
-    400012: rodasRight
-    400014: //RootNode
-    2300000: basecanhao
-    2300002: canhao
-    2300004: corpo
-    2300006: pneus01
-    2300008: pneus02
-    2300010: rodasLeft
-    2300012: rodasRight
-    3300000: basecanhao
-    3300002: canhao
-    3300004: corpo
-    3300006: pneus01
-    3300008: pneus02
-    3300010: rodasLeft
-    3300012: rodasRight
-    4300000: corpo
-    4300002: rodasLeft
-    4300004: pneus01
-    4300006: rodasRight
-    4300008: pneus02
-    4300010: canhao
-    4300012: basecanhao
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Sphere
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -66,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: .5
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
