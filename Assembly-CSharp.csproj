@@ -49,6 +49,7 @@
      <Compile Include="Assets\scripts\player\CanhaoController.cs" />
      <Compile Include="Assets\scripts\player\PlayerController.cs" />
      <Compile Include="Assets\scripts\player\TiroController.cs" />
+     <Compile Include="Assets\scripts\tanque\Audio.cs" />
      <Compile Include="Assets\scripts\tanque\Canhao.cs" />
      <Compile Include="Assets\scripts\tanque\Corpo.cs" />
      <Compile Include="Assets\scripts\tanque\Tiro.cs" />

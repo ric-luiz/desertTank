@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class Corpo : MonoBehaviour
 {
@@ -8,14 +9,19 @@ public class Corpo : MonoBehaviour
     public int speed;
     public int rotacao;
 
+	public AudioClip[] sfxMotor;
+	private Audio audio;
+
     void Start()
     {
+		audio = new Audio (sfxMotor,GetComponent<AudioSource>());
         rb = GetComponent<Rigidbody>();
         speed *= potencia;
     }
 
     void Update()
     {
+		audio.motorLigado ();
     }
 
     void FixedUpdate()
