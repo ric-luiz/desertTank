@@ -13,7 +13,8 @@ public class Tiro : MonoBehaviour {
     void Start() {
         tiro = Instantiate(tiro, transform.position, transform.rotation) as GameObject;
         tiro.SetActive(false);
-        rbTiro = tiro.GetComponent<Rigidbody>();        
+        rbTiro = tiro.GetComponent<Rigidbody>();
+        InvokeRepeating("retirarExplosoes",5.0f,5.0f);        
     }
         
 	void FixedUpdate () {        
@@ -30,7 +31,8 @@ public class Tiro : MonoBehaviour {
     //Posicionar o tiro corretamente e Atirar!
     void Atirar() {
         resetarForcaTiro();                
-        rbTiro.MovePosition(transform.position);       
+        rbTiro.MovePosition(transform.position);
+        rbTiro.MoveRotation(transform.rotation);       
         tiro.GetComponent<Rigidbody>().AddForce(transform.forward*ImpulsoTiro,ForceMode.Impulse);
     }
 
@@ -47,6 +49,17 @@ public class Tiro : MonoBehaviour {
             Instantiate(explosao, 
                         tiro.transform.position, 
                         tiro.transform.rotation);
+        }
+    }
+
+    public void retirarExplosoes() {
+        GameObject[] explosoes = GameObject.FindGameObjectsWithTag("explosao");        
+        if (explosoes.Length > 0)
+        {
+            foreach (GameObject g in explosoes)
+            {
+                Destroy(g);
+            }
         }
     }
 }
