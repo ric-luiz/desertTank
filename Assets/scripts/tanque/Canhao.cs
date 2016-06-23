@@ -14,7 +14,7 @@ public class Canhao: MonoBehaviour
     }
 
     void FixedUpdate()
-    {
+    {								
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);        
         if (Physics.Raycast(ray, out hit))
         {
@@ -39,7 +39,8 @@ public class Canhao: MonoBehaviour
 
     //Seta a rotacao para a base do canhao
     void setarRotacaoBase(Vector3 position)
-    {
+    {	
+		offSetRotacao ();
         position.y = 0;
         Quaternion rotation = Quaternion.LookRotation(position);
         if (verificarRotacaoAtingiuDestino(transform.eulerAngles.y, rotation.eulerAngles.y))
@@ -55,6 +56,13 @@ public class Canhao: MonoBehaviour
 
         }
     }
+
+	void offSetRotacao(){
+		if(Corpo.getDirecaoRotacao()[0] != 0){
+			int rotacaoOffSet = Corpo.getDirecaoRotacao()[0] * Corpo.getDirecaoRotacao()[1];
+			transform.Rotate (Vector3.up * rotacaoOffSet * Time.deltaTime);
+		}
+	}
 
     //Seta a rotacao da ponta do canhao
     void setarRotacaoCanhao(Vector3 position)
@@ -119,10 +127,5 @@ public class Canhao: MonoBehaviour
 
         }
         return i < j ? true : false;
-    }
-
-    void manterModulo()
-    {
-
     }
 }

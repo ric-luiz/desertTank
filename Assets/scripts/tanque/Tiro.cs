@@ -14,7 +14,7 @@ public class Tiro : MonoBehaviour {
         tiro = Instantiate(tiro, transform.position, transform.rotation) as GameObject;
         tiro.SetActive(false);
         rbTiro = tiro.GetComponent<Rigidbody>();
-        InvokeRepeating("retirarExplosoes",5.0f,5.0f);        
+        InvokeRepeating("retirarExplosoes",5.0f,5.0f);	//Repete a função a cada 5 segundos
     }
         
 	void FixedUpdate () {        
@@ -53,12 +53,12 @@ public class Tiro : MonoBehaviour {
     }
 
     public void retirarExplosoes() {
-        GameObject[] explosoes = GameObject.FindGameObjectsWithTag("explosao");        
+		GameObject[] explosoes = GameObject.FindGameObjectsWithTag("explosao");        
         if (explosoes.Length > 0)
         {
             foreach (GameObject g in explosoes)
             {
-                Destroy(g);
+                Destroy(g,5);
             }
         }
     }

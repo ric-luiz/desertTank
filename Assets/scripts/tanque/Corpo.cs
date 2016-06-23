@@ -8,6 +8,7 @@ public class Corpo : MonoBehaviour
     public int potencia;
     public int speed;
     public int rotacao;
+	private static int[] rotacaoDirecao;	//Recebe o valor da rotacao e a direcao da rotacao
 
 	public AudioClip[] sfxMotor;
 	private Audio audio;
@@ -17,6 +18,8 @@ public class Corpo : MonoBehaviour
 		audio = new Audio (sfxMotor,GetComponent<AudioSource>());
         rb = GetComponent<Rigidbody>();
         speed *= potencia;
+		rotacaoDirecao = new int[2];
+		rotacaoDirecao[1] = rotacao;	//recebendo o valor da rotacao
     }
 
     void Update()
@@ -35,13 +38,18 @@ public class Corpo : MonoBehaviour
             rb.AddForce(-transform.forward * speed * Time.deltaTime);
         }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Rotate(Vector3.up * -rotacao * Time.deltaTime);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(Vector3.up * rotacao * Time.deltaTime);
-        }
+		if (Input.GetKey (KeyCode.A)) {
+			transform.Rotate (Vector3.up * -rotacao * Time.deltaTime);
+			rotacaoDirecao[0] = 1;
+		} else if (Input.GetKey (KeyCode.D)) {
+			transform.Rotate (Vector3.up * rotacao * Time.deltaTime);
+			rotacaoDirecao[0] = -1;
+		} else {
+			rotacaoDirecao[0] = 0;
+		}
     }
+
+	public static int[] getDirecaoRotacao(){
+		return rotacaoDirecao;
+	}		
 }
