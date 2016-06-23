@@ -28,7 +28,9 @@ public class Tiro : MonoBehaviour {
         }                             
     }
 
-    //Posicionar o tiro corretamente e Atirar!
+    /// <summary>
+	/// /Posicionar o tiro corretamente e Atirar!
+    /// </summary>
     void Atirar() {
         resetarForcaTiro();                
         rbTiro.MovePosition(transform.position);
@@ -36,12 +38,17 @@ public class Tiro : MonoBehaviour {
         tiro.GetComponent<Rigidbody>().AddForce(transform.forward*ImpulsoTiro,ForceMode.Impulse);
     }
 
-    //Resetar as forças do rigidBody atuando sobre o tiro
+    /// <summary>
+	/// Resetar as forças do rigidBody atuando sobre o tiro
+    /// </summary>
     void resetarForcaTiro() {
         rbTiro.isKinematic = true;
         rbTiro.isKinematic = false;
     }
 
+	/// <summary>
+	/// Verifica se o Tiro Atingiu alguma coisa. Faz todos os procedimento para desativar o tiro e gerar a explosão no local do tiro
+	/// </summary>
     void atingiu() {
         if (tiro.GetComponent<TiroColisao>().getColidiu()) {
             tiro.GetComponent<TiroColisao>().setColidiu(false);            
@@ -52,6 +59,9 @@ public class Tiro : MonoBehaviour {
         }
     }
 
+	/// <summary>
+	/// Destroir os objetos explosões. Cada explosão é retirada em 5 segundos
+	/// </summary>
     public void retirarExplosoes() {
 		GameObject[] explosoes = GameObject.FindGameObjectsWithTag("explosao");        
         if (explosoes.Length > 0)

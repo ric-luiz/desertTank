@@ -10,12 +10,12 @@ public class Canhao: MonoBehaviour
 
     void Start()
     {
-        pontaCanhao = transform.GetChild(0).GetChild(0);
+        pontaCanhao = transform.GetChild(0).GetChild(0);	//Pega o objeto que corresponde a ponta do canhão
     }
 
     void FixedUpdate()
     {								
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);        
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);    //Pega o ponto em que o ponteiro do mouse está apontando. Já convertido para Ray    
         if (Physics.Raycast(ray, out hit))
         {
             //Pega o ponteiro do mouse para qualquer lugar que contenha objetos
@@ -34,14 +34,17 @@ public class Canhao: MonoBehaviour
             setarRotacaoBase(position);
             setarRotacaoCanhao(position);            
         }
-        Debug.DrawLine(ray.origin, hit.point);
+        Debug.DrawLine(ray.origin, hit.point);	//Desenha a linha do raycast. Somente para fins de desenvolvimento
     }
 
-    //Seta a rotacao para a base do canhao
+    /// <summary>
+	/// Seta a rotacao para a base do canhao
+    /// </summary>
+    /// <param name="position">Recebe um Vector3 que contem o ponto em que o mouse está apontando.</param>
     void setarRotacaoBase(Vector3 position)
     {	
-		offSetRotacao ();
-        position.y = 0;
+		offSetRotacao ();	//Compensão da rotacao herdada pelo elemento pai
+        position.y = 0;		//Isso evita que a rotação mexa no eixo y da baseCanhao
         Quaternion rotation = Quaternion.LookRotation(position);
         if (verificarRotacaoAtingiuDestino(transform.eulerAngles.y, rotation.eulerAngles.y))
         {
@@ -57,17 +60,23 @@ public class Canhao: MonoBehaviour
         }
     }
 
+	/// <summary>
+	/// Faz a compensasão da rotação do pai para o filho. Aqui evitamos que a herança da rotação do eixo y do elemento pai para o filho
+	/// </summary>
 	void offSetRotacao(){
 		if(Corpo.getDirecaoRotacao()[0] != 0){
-			int rotacaoOffSet = Corpo.getDirecaoRotacao()[0] * Corpo.getDirecaoRotacao()[1];
+			int rotacaoOffSet = Corpo.getDirecaoRotacao()[0] * Corpo.getDirecaoRotacao()[1];	//Pega valores estaticos da classe Corpo
 			transform.Rotate (Vector3.up * rotacaoOffSet * Time.deltaTime);
 		}
 	}
 
-    //Seta a rotacao da ponta do canhao
+    /// <summary>
+	/// Seta a rotacao da ponta do canhao
+    /// </summary>
+	/// <param name="position">Recebe um Vector3 que contem o ponto em que o mouse está apontando.</param>
     void setarRotacaoCanhao(Vector3 position)
     {
-        position.x = 0;
+        position.x = 0;	//Evitamos que o eixo x seja alterado no processo
         position.z += 150.0f;
         Quaternion rotation = Quaternion.LookRotation(position);
 

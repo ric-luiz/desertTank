@@ -21,19 +21,14 @@ public class Corpo : MonoBehaviour
 		rotacaoDirecao = new int[2];
 		rotacaoDirecao[1] = rotacao;	//recebendo o valor da rotacao
     }
-
-
-    void FixedUpdate()
-        
+		
+    void FixedUpdate()        
     {
         audio.motorLigado();
-
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.forward * speed * Time.deltaTime);
-            audio.acelerar();
-        
-                
+            audio.acelerar();                        
         }
         else if (Input.GetKey(KeyCode.S))
         {
@@ -51,6 +46,10 @@ public class Corpo : MonoBehaviour
 		}
     }
 
+	/// <summary>
+	/// Recupera um array de int que contem na primeira posição a velovidade de rotação e no segundo a direção dessa rotação.
+	/// </summary>
+	/// <returns>Um int[] com 2 posições, contendo a rotação e a direção da rotação</returns>
 	public static int[] getDirecaoRotacao(){
 		return rotacaoDirecao;
 	}		
