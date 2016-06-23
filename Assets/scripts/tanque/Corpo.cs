@@ -19,16 +19,18 @@ public class Corpo : MonoBehaviour
         speed *= potencia;
     }
 
-    void Update()
-    {
-		audio.motorLigado ();
-    }
 
     void FixedUpdate()
+        
     {
+        audio.motorLigado();
+
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.forward * speed * Time.deltaTime);
+            audio.acelerar();
+        
+                
         }
         else if (Input.GetKey(KeyCode.S))
         {
