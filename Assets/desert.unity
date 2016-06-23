@@ -479,7 +479,7 @@ MonoBehaviour:
   speed: 25
   rotacao: 25
   sfxMotor:
-  - {fileID: 8300000, guid: 078729019068d9443823df8d5d6e1c46, type: 3}
+  - {fileID: 8300000, guid: e4ba530468ac2c749b66f0f1f84be1a9, type: 3}
   - {fileID: 8300000, guid: fa95166c215e9b2459953a25348852db, type: 3}
   - {fileID: 8300000, guid: 300ba0191c402754ebbe52f56a50401c, type: 3}
 --- !u!54 &938543571
