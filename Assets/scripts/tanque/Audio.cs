@@ -5,20 +5,17 @@ public class Audio : MonoBehaviour {
 	/* 
 	 	Playlist:
 		0:ligarMotor;
-		1:celeraçãoMotor;
 		2:motorParado;
 	*/
-
 	private AudioClip[] sfxMotor;
 
-
 	private AudioSource source;
-	private float tempoTransicao;
+	private float passo=1.0f;
 
-	public Audio (AudioClip[] sfxMotor, AudioSource fonte)
+	public Audio (AudioClip[] sfxMotor, AudioSource source)
 	{
 		this.sfxMotor = sfxMotor;
-		source = fonte;
+		this.source = source;
 		source.clip = sfxMotor [0];
 		source.Play ();
 	
@@ -30,24 +27,24 @@ public class Audio : MonoBehaviour {
         if (!source.isPlaying)
         {
             source.loop = true;
-            source.clip = sfxMotor[2];
+            source.clip = sfxMotor[1];
             source.Play();
-        }
+		 }
     }
 
-    public void acelerar()
-    {
-        source.loop = false;
-        source.clip = sfxMotor[1];
-        if (!source.isPlaying)
-        {
-            source.Play();
-        }
-        if (!source.isPlaying)
-        {
-            source.loop = true;
-            source.clip = sfxMotor[0];
-            source.Play();
-        }
-    }
+	public void acelerar(){
+		if (passo < 1.3f) {
+			passo += 0.1f*Time.deltaTime;
+			source.pitch = passo;
+		}
+	}
+
+	public void desacelerar(){
+		if (passo < 1.5f && passo >0.9f) {
+			passo -= 0.35f*Time.deltaTime;
+			source.pitch = passo;
+		}
+		
+	}
+
 }
