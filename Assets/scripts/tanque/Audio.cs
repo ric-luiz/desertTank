@@ -1,47 +1,50 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Audio;
 
-public class Audio : MonoBehaviour {
+public class Audio : MonoBehaviour
+{
 	/* 
 	 	Playlist:
 		0:ligarMotor;
-		2:motorParado;
+		1:motorParado;
 	*/
 	private AudioClip[] sfxMotor;
 
 	private AudioSource source;
-	private float passo=1.0f;
+	private float passo = 1;
 
 	public Audio (AudioClip[] sfxMotor, AudioSource source)
 	{
 		this.sfxMotor = sfxMotor;
 		this.source = source;
 		source.clip = sfxMotor [0];
+		source.volume = 0.65f;
 		source.Play ();
-	
 	}
 
-    public void motorLigado()
-    {
+	public void motorLigado ()
+	{
+		if (!source.isPlaying) {
+			source.loop = true;
+			source.clip = sfxMotor [1];
+			source.volume = 0.65f;
+			source.Play ();
+		}
+	}
 
-        if (!source.isPlaying)
-        {
-            source.loop = true;
-            source.clip = sfxMotor[1];
-            source.Play();
-		 }
-    }
-
-	public void acelerar(){
+	public void acelerar ()
+	{
 		if (passo < 1.3f) {
-			passo += 0.1f*Time.deltaTime;
+			passo += 0.1f * Time.deltaTime;
 			source.pitch = passo;
 		}
 	}
 
-	public void desacelerar(){
-		if (passo < 1.5f && passo >0.9f) {
-			passo -= 0.35f*Time.deltaTime;
+	public void desacelerar ()
+	{
+		if (passo < 1.5f && passo > 0.99f) {
+			passo -= 0.35f * Time.deltaTime;
 			source.pitch = passo;
 		}
 		

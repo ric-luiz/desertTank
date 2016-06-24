@@ -10,11 +10,16 @@ public class Tiro : MonoBehaviour {
     private double fireRate;    //Variavel para contar o tempo
     public int timeFire;        //Quantos segundos entre um tiro e outro
 
+	public AudioTiro audioTiro;
+	public AudioClip[] sfxTiro;
+
     void Start() {
         tiro = Instantiate(tiro, transform.position, transform.rotation) as GameObject;
         tiro.SetActive(false);
         rbTiro = tiro.GetComponent<Rigidbody>();
         InvokeRepeating("retirarExplosoes",5.0f,5.0f);	//Repete a função a cada 5 segundos
+
+		audioTiro = new AudioTiro (sfxTiro,GetComponent<AudioSource> ());
     }
         
 	void FixedUpdate () {        
@@ -24,6 +29,7 @@ public class Tiro : MonoBehaviour {
         {
             tiro.SetActive(true);
             Atirar();
+			audioTiro.atirar ();
             fireRate = 0;
         }                             
     }
@@ -51,6 +57,7 @@ public class Tiro : MonoBehaviour {
 	/// </summary>
     void atingiu() {
         if (tiro.GetComponent<TiroColisao>().getColidiu()) {
+			audioTiro.tiroAtingido ();
             tiro.GetComponent<TiroColisao>().setColidiu(false);            
             tiro.SetActive(false);           
             Instantiate(explosao, 
