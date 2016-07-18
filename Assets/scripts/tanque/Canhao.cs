@@ -7,9 +7,11 @@ public class Canhao: MonoBehaviour
     private float angularSpeed = 100.0f;
     private Transform pontaCanhao;
     private static RaycastHit hit;
+	protected int[] direcaoCorpo;
+	public GameObject corpo;
 
-    void Start()
-    {
+	public void Start()
+    {		
         pontaCanhao = transform.GetChild(0).GetChild(0);	//Pega o objeto que corresponde a ponta do canhão
     }
 
@@ -63,12 +65,18 @@ public class Canhao: MonoBehaviour
 	/// <summary>
 	/// Faz a compensasão da rotação do pai para o filho. Aqui evitamos que a herança da rotação do eixo y do elemento pai para o filho
 	/// </summary>
-	void offSetRotacao(){
-		if(Corpo.getDirecaoRotacao()[0] != 0){
-			int rotacaoOffSet = Corpo.getDirecaoRotacao()[0] * Corpo.getDirecaoRotacao()[1];	//Pega valores estaticos da classe Corpo
+	void offSetRotacao(){	
+		setarDirecaoRotacao ();
+		if(direcaoCorpo[0] != 0){
+			int rotacaoOffSet = direcaoCorpo[0] * direcaoCorpo[1];	//Pega valores estaticos da classe Corpo
 			transform.Rotate (Vector3.up * rotacaoOffSet * Time.deltaTime);
 		}
 	}
+
+	/// <summary>
+	/// Usado para ser sobreescrito no filho para setar a rotação de acordo com o corpo do objeto
+	/// </summary>
+	protected virtual void setarDirecaoRotacao(){}
 
     /// <summary>
 	/// Seta a rotacao da ponta do canhao

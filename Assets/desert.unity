@@ -199,6 +199,34 @@ Prefab:
       propertyPath: goal
       value: 
       objectReference: {fileID: 938543569}
+    - target: {fileID: 19588348, guid: c71f6b08b8e069f4fa73f9b91839d57b, type: 2}
+      propertyPath: m_AngularSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19588348, guid: c71f6b08b8e069f4fa73f9b91839d57b, type: 2}
+      propertyPath: m_StoppingDistance
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 11405230, guid: c71f6b08b8e069f4fa73f9b91839d57b, type: 2}
+      propertyPath: speed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11405230, guid: c71f6b08b8e069f4fa73f9b91839d57b, type: 2}
+      propertyPath: rotacao
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 437014, guid: c71f6b08b8e069f4fa73f9b91839d57b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19588348, guid: c71f6b08b8e069f4fa73f9b91839d57b, type: 2}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 192956, guid: c71f6b08b8e069f4fa73f9b91839d57b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c71f6b08b8e069f4fa73f9b91839d57b, type: 2}
   m_IsPrefabParent: 0
@@ -411,6 +439,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11452090, guid: fff7122b1994022428383edf4bf625e1, type: 2}
+      propertyPath: corpo
+      value: 
+      objectReference: {fileID: 938543568}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fff7122b1994022428383edf4bf625e1, type: 2}
   m_IsPrefabParent: 0

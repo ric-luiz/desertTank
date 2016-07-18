@@ -5,17 +5,17 @@ using UnityEngine.Audio;
 public class Corpo : MonoBehaviour
 {
 		
-	private Rigidbody rb;
+	protected Rigidbody rb;
 	public int potencia;
 	public int speed;
 	public float rotacao;
-	private static int[] rotacaoDirecao;
+	protected int[] rotacaoDirecao;
 	//Recebe o valor da rotacao e a direcao da rotacao
 
 	public AudioClip[] sfxMotor;
-	private Audio audio;
+	public Audio audio;
 
-	protected virtual void Start ()
+	public virtual void Start ()
 	{
 		audio = new Audio (sfxMotor, GetComponent<AudioSource> ());
 		rb = GetComponent<Rigidbody> ();
@@ -25,13 +25,13 @@ public class Corpo : MonoBehaviour
 	}
 
 
-	void FixedUpdate ()
+	public void FixedUpdate ()
 	{
 		audios ();
 		controlador ();
 	}
 
-	void audios(){
+	public void audios(){
 		audio.motorLigado ();
 	}
 
@@ -42,6 +42,8 @@ public class Corpo : MonoBehaviour
 		} else if (Input.GetKey (KeyCode.S)) {
 			rb.AddForce (-transform.forward * speed * Time.deltaTime);
 			audio.acelerar ();
+		} else {
+			audio.desacelerar ();
 		}
 
 		if (Input.GetKey (KeyCode.A)) {
@@ -53,12 +55,9 @@ public class Corpo : MonoBehaviour
 		} else {
 			rotacaoDirecao [0] = 0;
 		}
-		if (!Input.GetKey (KeyCode.W) && !Input.GetKey (KeyCode.S)) {
-			audio.desacelerar ();
-		}
 	}
 
-	public static int[] getDirecaoRotacao ()
+	public int[] getDirecaoRotacao ()
 	{
 		return rotacaoDirecao;
 	}
