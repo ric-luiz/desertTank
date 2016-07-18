@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class moveTo : MonoBehaviour {
-	public Transform goal;
+	private Transform goal;
 	private NavMeshAgent nav ;
 
 	void Start () {
+		goal = GameObject.FindGameObjectWithTag ("Player").transform;
 		nav = GetComponent<NavMeshAgent> ();
 		nav.updatePosition = false;
 	}
@@ -13,5 +14,9 @@ public class moveTo : MonoBehaviour {
 	void FixedUpdate(){
 		if(goal != null)
 			nav.SetDestination(goal.position);
+	}
+
+	public Transform getGoal(){
+		return goal;
 	}
 }

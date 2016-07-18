@@ -3,19 +3,19 @@ using System.Collections;
 
 public class Canhao: MonoBehaviour
 {
-    private Vector3 position;
-    private float angularSpeed = 100.0f;
-    private Transform pontaCanhao;
-    private static RaycastHit hit;
-	protected int[] direcaoCorpo;
+	protected Vector3 position;
+	protected float angularSpeed = 100.0f;
+	protected Transform pontaCanhao;
+	protected RaycastHit hit;
+	protected float[] direcaoCorpo;
 	public GameObject corpo;
 
-	public void Start()
+	public virtual void Start()
     {		
         pontaCanhao = transform.GetChild(0).GetChild(0);	//Pega o objeto que corresponde a ponta do canhão
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {								
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);    //Pega o ponto em que o ponteiro do mouse está apontando. Já convertido para Ray    
         if (Physics.Raycast(ray, out hit))
@@ -43,7 +43,7 @@ public class Canhao: MonoBehaviour
 	/// Seta a rotacao para a base do canhao
     /// </summary>
     /// <param name="position">Recebe um Vector3 que contem o ponto em que o mouse está apontando.</param>
-    void setarRotacaoBase(Vector3 position)
+    protected virtual void setarRotacaoBase(Vector3 position)
     {	
 		offSetRotacao ();	//Compensão da rotacao herdada pelo elemento pai
         position.y = 0;		//Isso evita que a rotação mexa no eixo y da baseCanhao
@@ -65,10 +65,10 @@ public class Canhao: MonoBehaviour
 	/// <summary>
 	/// Faz a compensasão da rotação do pai para o filho. Aqui evitamos que a herança da rotação do eixo y do elemento pai para o filho
 	/// </summary>
-	void offSetRotacao(){	
+	protected void offSetRotacao(){	
 		setarDirecaoRotacao ();
 		if(direcaoCorpo[0] != 0){
-			int rotacaoOffSet = direcaoCorpo[0] * direcaoCorpo[1];	//Pega valores estaticos da classe Corpo
+			float rotacaoOffSet = direcaoCorpo[0] * direcaoCorpo[1];	//Pega valores estaticos da classe Corpo
 			transform.Rotate (Vector3.up * rotacaoOffSet * Time.deltaTime);
 		}
 	}
@@ -82,7 +82,7 @@ public class Canhao: MonoBehaviour
 	/// Seta a rotacao da ponta do canhao
     /// </summary>
 	/// <param name="position">Recebe um Vector3 que contem o ponto em que o mouse está apontando.</param>
-    void setarRotacaoCanhao(Vector3 position)
+	protected void setarRotacaoCanhao(Vector3 position)
     {
         position.x = 0;	//Evitamos que o eixo x seja alterado no processo
         position.z += 150.0f;
@@ -109,7 +109,7 @@ public class Canhao: MonoBehaviour
     }
 
     //Verifica se os angulos da origem e destinos sao praticamente iguais
-    bool verificarRotacaoAtingiuDestino(float anguloOrigem, float anguloDestino)
+	protected bool verificarRotacaoAtingiuDestino(float anguloOrigem, float anguloDestino)
     {
         if (anguloOrigem >= anguloDestino - 2.0f && anguloOrigem <= anguloDestino + 2.0f)
         {
@@ -119,7 +119,7 @@ public class Canhao: MonoBehaviour
     }
 
     //Verifica qual o melhor lado Rodar a base para encontrar o ponto.
-    bool verificarMelhorLadoVirar(float anguloOrigem, float anguloDestino)
+	protected bool verificarMelhorLadoVirar(float anguloOrigem, float anguloDestino)
     {
         int n1 = (int)anguloOrigem;
         int i = 0, j = 0;

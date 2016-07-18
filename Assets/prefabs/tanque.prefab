@@ -31,7 +31,7 @@ GameObject:
   - 82: {fileID: 8293028}
   m_Layer: 0
   m_Name: tanque
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +211,7 @@ Transform:
   m_LocalRotation: {x: -0.49999997, y: -0.50000006, z: -0.50000006, w: 0.49999997}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
   m_Children:
   - {fileID: 439916}
   m_Father: {fileID: 416400}
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81e86c4e7e1b054cbc25fbc9b370f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  corpo: {fileID: 138196}
 --- !u!114 &11460680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,6 +557,7 @@ MonoBehaviour:
   sfxMotor:
   - {fileID: 8300000, guid: e4ba530468ac2c749b66f0f1f84be1a9, type: 3}
   - {fileID: 8300000, guid: 300ba0191c402754ebbe52f56a50401c, type: 3}
+  audio: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

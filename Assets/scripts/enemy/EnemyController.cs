@@ -4,6 +4,7 @@ using System.Collections;
 public class EnemyController : Corpo {
 	private GameObject guia;
 	private Quaternion rotacaoPosicao;
+	private Vector3 rotacaoAUX;		//Variavel serve para testarmos para qual lado o tanque esta virando
 	private Vector3 posicao;
 	private Transform target;
 
@@ -14,7 +15,7 @@ public class EnemyController : Corpo {
 
 	protected override void controlador(){		
 
-		target = guia.GetComponent<moveTo> ().goal.transform;
+		target = guia.GetComponent<moveTo> ().getGoal();
 		posicao = target.position - transform.position;
 		posicao.y = 0;
 
@@ -23,6 +24,20 @@ public class EnemyController : Corpo {
 
 		if(Vector3.Distance(transform.position,target.position) >= guia.GetComponent<NavMeshAgent>().stoppingDistance){
 			rb.AddForce (transform.forward * speed * Time.deltaTime);	
-		}			
+		}
+
+		verificarLadoRotacao (rotacaoAUX);
+		rotacaoAUX = transform.eulerAngles;
+	}
+
+	private void verificarLadoRotacao(Vector3 rotacao)
+	{
+		if (rotacao.y >= transform.eulerAngles.y) {
+			rotacaoDirecao [0] = 1.0f;
+		} else if (rotacao.y <= transform.eulerAngles.y) {
+			rotacaoDirecao [0] = -1.0f;
+		} else {
+			rotacaoDirecao [0] = 0;
+		}
 	}
 }
