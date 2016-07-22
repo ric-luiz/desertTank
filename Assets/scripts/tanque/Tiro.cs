@@ -3,41 +3,44 @@ using System.Collections;
 
 public class Tiro : MonoBehaviour {
     public GameObject tiro;
-    private Rigidbody rbTiro;   //RigidBody do Tiro    
+	protected Rigidbody rbTiro;   //RigidBody do Tiro    
     public int ImpulsoTiro;     //Forca instantanea que será aplicada no tiro
     public GameObject explosao;
     //Usado para os intervalos entre um tiro e outro
-    private double fireRate;    //Variavel para contar o tempo
+	protected double fireRate;    //Variavel para contar o tempo
     public int timeFire;        //Quantos segundos entre um tiro e outro
 
 	public AudioTiro audioTiro;
 	public AudioClip[] sfxTiro;
 
-    void Start() {
+    protected virtual void Start() {
         tiro = Instantiate(tiro, transform.position, transform.rotation) as GameObject;
         tiro.SetActive(false);
-        rbTiro = tiro.GetComponent<Rigidbody>();
-        InvokeRepeating("retirarExplosoes",5.0f,5.0f);	//Repete a função a cada 5 segundos
+        rbTiro = tiro.GetComponent<Rigidbody>();        
 
 		audioTiro = new AudioTiro (sfxTiro,GetComponent<AudioSource> ());
     }
         
 	void FixedUpdate () {        
         atingiu();
-        fireRate += Time.deltaTime;
-        if (Input.GetMouseButtonDown(0) && timeFire < fireRate)
-        {
-            tiro.SetActive(true);
-            Atirar();
-			audioTiro.atirar ();
-            fireRate = 0;
-        }                             
+        fireRate += Time.deltaTime;  
+		controller ();
     }
+
+	protected virtual void controller(){
+		if (Input.GetMouseButtonDown(0) && timeFire < fireRate)
+		{
+			tiro.SetActive(true);
+			Atirar();
+			audioTiro.atirar ();
+			fireRate = 0;
+		}   
+	}
 
     /// <summary>
 	/// /Posicionar o tiro corretamente e Atirar!
     /// </summary>
-    void Atirar() {
+	protected void Atirar() {
         resetarForcaTiro();                
         rbTiro.MovePosition(transform.position);
         rbTiro.MoveRotation(transform.rotation);       

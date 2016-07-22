@@ -48,19 +48,29 @@ public class Canhao: MonoBehaviour
 		offSetRotacao ();	//Compensão da rotacao herdada pelo elemento pai
         position.y = 0;		//Isso evita que a rotação mexa no eixo y da baseCanhao
         Quaternion rotation = Quaternion.LookRotation(position);
-        if (verificarRotacaoAtingiuDestino(transform.eulerAngles.y, rotation.eulerAngles.y))
-        {
+		if (verificarRotacaoAtingiuDestino (transform.eulerAngles.y, rotation.eulerAngles.y)) {
 
-            if (verificarMelhorLadoVirar(transform.eulerAngles.y, rotation.eulerAngles.y))
-            {
-                transform.Rotate(Vector3.up * angularSpeed * Time.deltaTime);
-            }
-            else {
-                transform.Rotate(-Vector3.up * angularSpeed * Time.deltaTime);
-            }
+			if (verificarMelhorLadoVirar (transform.eulerAngles.y, rotation.eulerAngles.y)) {
+				transform.Rotate (Vector3.up * angularSpeed * Time.deltaTime);
+			} else {
+				transform.Rotate (-Vector3.up * angularSpeed * Time.deltaTime);
+			}
 
-        }
+		} else {
+			atingiuRotacaoBase ();
+		}
     }
+
+	/// <summary>
+	/// O metodo serve para ser sobreescrito pelos filhos da classe. 
+	/// Usa-se para realizar algo apos a base atingir o fim de sua rotação (Como um callback)
+	/// </summary>
+	protected virtual void atingiuRotacaoBase(){}
+	/// <summary>
+	/// O metodo serve para ser sobreescrito pelos filhos da classe. 
+	/// Usa-se para realizar algo apos a ponta do canhão atingir o fim de sua rotação (Como um callback)
+	/// </summary>
+	protected virtual void atingiuRotacaoPonta(){}
 
 	/// <summary>
 	/// Faz a compensasão da rotação do pai para o filho. Aqui evitamos que a herança da rotação do eixo y do elemento pai para o filho
@@ -88,24 +98,22 @@ public class Canhao: MonoBehaviour
         position.z += 150.0f;
         Quaternion rotation = Quaternion.LookRotation(position);
 
-        if (verificarRotacaoAtingiuDestino(pontaCanhao.eulerAngles.x, rotation.eulerAngles.x))
-        {
+		if (verificarRotacaoAtingiuDestino (pontaCanhao.eulerAngles.x, rotation.eulerAngles.x)) {
 
-            if (verificarMelhorLadoVirar(pontaCanhao.eulerAngles.x, rotation.eulerAngles.x))
-            {
-                pontaCanhao.Rotate(Vector3.right * angularSpeed * Time.deltaTime);
+			if (verificarMelhorLadoVirar (pontaCanhao.eulerAngles.x, rotation.eulerAngles.x)) {
+				pontaCanhao.Rotate (Vector3.right * angularSpeed * Time.deltaTime);
 
-                //Limita o quanto a ponta pode ir para baixo
-                if (pontaCanhao.eulerAngles.x >= 10.0f && pontaCanhao.eulerAngles.x <= 180.0f)
-                {
-                    pontaCanhao.Rotate(-Vector3.right * angularSpeed * Time.deltaTime, Space.Self);
-                }
-            }
-            else {
-                pontaCanhao.Rotate(-Vector3.right * angularSpeed * Time.deltaTime);
-            }
+				//Limita o quanto a ponta pode ir para baixo
+				if (pontaCanhao.eulerAngles.x >= 10.0f && pontaCanhao.eulerAngles.x <= 180.0f) {
+					pontaCanhao.Rotate (-Vector3.right * angularSpeed * Time.deltaTime, Space.Self);
+				}
+			} else {
+				pontaCanhao.Rotate (-Vector3.right * angularSpeed * Time.deltaTime);
+			}
 
-        }
+		} else {
+			atingiuRotacaoPonta ();
+		}
     }
 
     //Verifica se os angulos da origem e destinos sao praticamente iguais

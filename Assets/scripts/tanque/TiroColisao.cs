@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class TiroColisao : MonoBehaviour {
-    private static bool Colidiu;	//o tiro colidiu com algo?
+    private bool Colidiu;	//o tiro colidiu com algo?
 
     void Start() {
         Colidiu = false;
