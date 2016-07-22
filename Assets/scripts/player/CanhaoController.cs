@@ -4,6 +4,6 @@ using System.Collections;
 public class CanhaoController : Canhao {
 	protected override void setarDirecaoRotacao ()
 	{
-		direcaoCorpo = corpo.GetComponent<PlayerController> ().getDirecaoRotacao ();
+		direcaoCorpo = Camera.main.GetComponent<CameraController> ().getDirecaoRotacao();
 	}
 }

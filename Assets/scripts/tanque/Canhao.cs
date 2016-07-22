@@ -75,12 +75,12 @@ public class Canhao: MonoBehaviour
 	/// <summary>
 	/// Faz a compensasão da rotação do pai para o filho. Aqui evitamos que a herança da rotação do eixo y do elemento pai para o filho
 	/// </summary>
-	protected void offSetRotacao(){	
-		setarDirecaoRotacao ();
-		if(direcaoCorpo[0] != 0){
-			float rotacaoOffSet = direcaoCorpo[0] * direcaoCorpo[1];	//Pega valores estaticos da classe Corpo
-			transform.Rotate (Vector3.up * rotacaoOffSet * Time.deltaTime);
-		}
+	protected void offSetRotacao(){		
+			setarDirecaoRotacao ();
+			if(direcaoCorpo[0] != 0){
+				float rotacaoOffSet = direcaoCorpo[0] * direcaoCorpo[1];	//Pega valores da classe Corpo
+				transform.Rotate (Vector3.up * rotacaoOffSet * Time.deltaTime);
+			}	
 	}
 
 	/// <summary>

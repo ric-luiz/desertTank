@@ -22,10 +22,7 @@ public class EnemyTiroController : Tiro {
 			Atirar();
 			audioTiro.atirar ();
 			fireRate = 0;
-		} 
-
-		//Debug.Log ("Base: "+canhaoScript.getVerificarRotacoes()[0]+" canhao: "+canhaoScript.getVerificarRotacoes()[1]);
-		//Debug.Log ("Distancia ate o personagem: "+Vector3.Distance(transform.position,PlayerObject.position));
+		} 			
 	}
 
 	bool permissaoParaAtirar(){
