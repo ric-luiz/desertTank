@@ -21,7 +21,7 @@ public class AudioTiro : MonoBehaviour {
 
 	public void tiroAtingido(){
 		source.clip = sfxTiro [0];
-		source.pitch=pitch;
+		source.pitch=pitch-0.1f;
 		source.Play ();
 	}
 }

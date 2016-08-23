@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: eca3c00ef1cc6ce45bfade23ebc4ab1e, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -241,6 +241,7 @@ GameObject:
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
+<<<<<<< HEAD
   - 224: {fileID: 241858589}
   - 223: {fileID: 241858588}
   - 114: {fileID: 241858587}
@@ -248,6 +249,18 @@ GameObject:
   m_Layer: 5
   m_Name: MapaCanvas
   m_TagString: Untagged
+=======
+  - 4: {fileID: 927127864}
+  - 20: {fileID: 927127863}
+  - 92: {fileID: 927127862}
+  - 124: {fileID: 927127861}
+  - 81: {fileID: 927127860}
+  - 114: {fileID: 927127865}
+  - 45: {fileID: 927127866}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+>>>>>>> faa1ce4e3590bd3c99a56c841967d2da454f4d01
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -321,6 +334,7 @@ RectTransform:
   m_Children:
   - {fileID: 1066707775}
   m_Father: {fileID: 0}
+<<<<<<< HEAD
   m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -328,6 +342,30 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &244119926
+=======
+  m_RootOrder: 6
+--- !u!114 &927127865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 927127859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0fa26b8392f4fc4f8115e89ed6a5178, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  guiaCamera: {fileID: 787246505}
+--- !u!45 &927127866
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 927127859}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
+--- !u!1 &938315066
+>>>>>>> faa1ce4e3590bd3c99a56c841967d2da454f4d01
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2478,7 +2516,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 416400, guid: fff7122b1994022428383edf4bf625e1, type: 2}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: 1591
+=======
+      value: 1797
+>>>>>>> faa1ce4e3590bd3c99a56c841967d2da454f4d01
       objectReference: {fileID: 0}
     - target: {fileID: 416400, guid: fff7122b1994022428383edf4bf625e1, type: 2}
       propertyPath: m_LocalPosition.y
