@@ -19,7 +19,7 @@ public class Audio : MonoBehaviour
 		this.sfxMotor = sfxMotor;
 		this.source = source;
 		source.clip = sfxMotor [0];
-		source.volume = 0.65f;
+		source.volume = 0.10f;
 		source.Play ();
 	}
 
@@ -28,7 +28,7 @@ public class Audio : MonoBehaviour
 		if (!source.isPlaying) {
 			source.loop = true;
 			source.clip = sfxMotor [1];
-			source.volume = 0.65f;
+			source.volume = 0.10f;
 			source.Play ();
 		}
 	}

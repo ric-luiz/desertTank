@@ -4,11 +4,9 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 
 	public GameObject guiaCamera;
-	private Vector3 offset;
 	private float[] rotacaoDirecao;	//Diz para que lado esta rodando. Server para fazer a compensação da rotação do canhão
 	
 	void Start () {
-		offset = transform.position - guiaCamera.transform.parent.position;
 		rotacaoDirecao = new float[2];
 		rotacaoDirecao [1] = 25;
 	}

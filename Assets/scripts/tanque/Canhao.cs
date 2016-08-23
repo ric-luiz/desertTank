@@ -95,7 +95,7 @@ public class Canhao: MonoBehaviour
 	protected void setarRotacaoCanhao(Vector3 position)
     {
         position.x = 0;	//Evitamos que o eixo x seja alterado no processo
-        position.z += 150.0f;
+        //position.z += 150.0f;
         Quaternion rotation = Quaternion.LookRotation(position);
 
 		if (verificarRotacaoAtingiuDestino (pontaCanhao.eulerAngles.x, rotation.eulerAngles.x)) {
@@ -105,7 +105,7 @@ public class Canhao: MonoBehaviour
 
 				//Limita o quanto a ponta pode ir para baixo
 				if (pontaCanhao.eulerAngles.x >= 10.0f && pontaCanhao.eulerAngles.x <= 180.0f) {
-					pontaCanhao.Rotate (-Vector3.right * angularSpeed * Time.deltaTime, Space.Self);
+					pontaCanhao.Rotate (-Vector3.right * angularSpeed * Time.deltaTime);
 				}
 			} else {
 				pontaCanhao.Rotate (-Vector3.right * angularSpeed * Time.deltaTime);

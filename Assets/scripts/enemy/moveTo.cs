@@ -8,7 +8,7 @@ public class moveTo : MonoBehaviour {
 	void Start () {
 		goal = GameObject.FindGameObjectWithTag ("Player").transform;
 		nav = GetComponent<NavMeshAgent> ();
-		nav.updatePosition = false;
+		//nav.updatePosition = false;
 	}
 
 	void FixedUpdate(){
