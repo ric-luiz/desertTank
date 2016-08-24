@@ -22,8 +22,11 @@ public class EnemyController : Corpo {
 		rotacaoPosicao = Quaternion.LookRotation (posicao);
 		transform.rotation = Quaternion.Slerp (transform.rotation,rotacaoPosicao, Time.deltaTime * rotacao);
 
-		if(Vector3.Distance(transform.position,target.position) >= guia.GetComponent<NavMeshAgent>().stoppingDistance){
-			rb.AddForce (transform.forward * speed * Time.deltaTime);	
+		if (Vector3.Distance (transform.position, target.position) >= guia.GetComponent<NavMeshAgent> ().stoppingDistance) {
+			rb.AddForce (transform.forward * speed * Time.deltaTime);
+			recursos.retirarCombustivel (recursos.gastoCombustivelMax*Time.deltaTime);
+		} else {
+			recursos.retirarCombustivel (recursos.gastoCombustivelMin*Time.deltaTime);
 		}
 
 		verificarLadoRotacao (rotacaoAUX);

@@ -22,6 +22,5 @@ public class CriadorInimigo : MonoBehaviour {
 			timeRate = 0.0f;
 		}
 		timeRate += Time.deltaTime;
-		Debug.Log(timeRate);
 	}
 }

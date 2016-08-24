@@ -4,7 +4,8 @@ using UnityEngine.Audio;
 
 public class Corpo : MonoBehaviour
 {
-		
+	public GameObject BarraRecursos;
+	protected BarraRecursos recursos;
 	protected Rigidbody rb;
 	public int potencia;
 	public int speed;
@@ -22,6 +23,7 @@ public class Corpo : MonoBehaviour
 		speed *= potencia;
 		rotacaoDirecao = new float[2];
 		rotacaoDirecao [1] = rotacao;	//recebendo o valor da rotacao
+		recursos = BarraRecursos.GetComponent<BarraRecursos>(); //Recebe o valor da barra de recursos do tanque
 	}
 
 
@@ -39,11 +41,14 @@ public class Corpo : MonoBehaviour
 		if (Input.GetKey (KeyCode.W)) {
 			rb.AddForce (transform.forward * speed * Time.deltaTime);
 			audio.acelerar ();
+			recursos.retirarCombustivel (recursos.gastoCombustivelMax*Time.deltaTime);
 		} else if (Input.GetKey (KeyCode.S)) {
 			rb.AddForce (-transform.forward * speed * Time.deltaTime);
 			audio.acelerar ();
+			recursos.retirarCombustivel (recursos.gastoCombustivelMax*Time.deltaTime);
 		} else {
 			audio.desacelerar ();
+			recursos.retirarCombustivel (recursos.gastoCombustivelMin*Time.deltaTime);
 		}
 
 		if (Input.GetKey (KeyCode.A)) {

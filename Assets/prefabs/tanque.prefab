@@ -580,8 +580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f58e5180223a4343b7518378f2f613d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BarraRecursos: {fileID: 0}
   potencia: 5000
-  speed: 25
+  speed: 35
   rotacao: 25
   sfxMotor:
   - {fileID: 8300000, guid: e4ba530468ac2c749b66f0f1f84be1a9, type: 3}

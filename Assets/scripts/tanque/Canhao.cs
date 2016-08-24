@@ -4,7 +4,7 @@ using System.Collections;
 public class Canhao: MonoBehaviour
 {
 	protected Vector3 position;
-	protected float angularSpeed = 100.0f;
+	protected float angularSpeed = 50.0f;
 	protected Transform pontaCanhao;
 	protected RaycastHit hit;
 	protected float[] direcaoCorpo;
@@ -95,7 +95,6 @@ public class Canhao: MonoBehaviour
 	protected void setarRotacaoCanhao(Vector3 position)
     {
         position.x = 0;	//Evitamos que o eixo x seja alterado no processo
-        //position.z += 150.0f;
         Quaternion rotation = Quaternion.LookRotation(position);
 
 		if (verificarRotacaoAtingiuDestino (pontaCanhao.eulerAngles.x, rotation.eulerAngles.x)) {
@@ -119,7 +118,7 @@ public class Canhao: MonoBehaviour
     //Verifica se os angulos da origem e destinos sao praticamente iguais
 	protected bool verificarRotacaoAtingiuDestino(float anguloOrigem, float anguloDestino)
     {
-        if (anguloOrigem >= anguloDestino - 2.0f && anguloOrigem <= anguloDestino + 2.0f)
+        if (anguloOrigem >= anguloDestino - 1.0f && anguloOrigem <= anguloDestino + 1.0f)
         {
             return false;
         }

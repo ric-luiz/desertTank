@@ -14,6 +14,13 @@ public class TiroColisao : MonoBehaviour {
     /// <param name="collision">Recebe o objeto com o qual o tiro colidiu</param>
     void OnCollisionEnter(Collision collision) {        
         Colidiu = true;
+
+		//collision.gameObject.tag
+		if(collision.gameObject.tag == "Player"){
+			collision.gameObject.GetComponent<PlayerController> ().BarraRecursos.GetComponent<BarraRecursos>().retirarVida(); //Pega: GameObject:BarraRecursos -> Script:BarraRecursos
+		} else if(collision.gameObject.tag == "inimigo"){
+			collision.gameObject.GetComponent<EnemyController> ().BarraRecursos.GetComponent<BarraRecursos>().retirarVida(); //Pega: GameObject:BarraRecursos -> Script:BarraRecursos
+		}
     }
 
 	/// <summary>
