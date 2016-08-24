@@ -6,6 +6,7 @@ TagManager:
   tags:
   - explosao
   - inimigo
+  - bandeira
   layers:
   - Default
   - TransparentFX

@@ -19,11 +19,11 @@ public class Canhao: MonoBehaviour
     {								
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);    //Pega o ponto em que o ponteiro do mouse está apontando. Já convertido para Ray    
         if (Physics.Raycast(ray, out hit))
-        {
-            //Pega o ponteiro do mouse para qualquer lugar que contenha objetos
-            position = hit.point - transform.position;
-            setarRotacaoBase(position);
-            setarRotacaoCanhao(position);            
+        {	
+			//Pega o ponteiro do mouse para qualquer lugar que contenha objetos
+			position = hit.point - transform.position;
+			setarRotacaoBase(position);
+			setarRotacaoCanhao(position);
         }
         else
         {

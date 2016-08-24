@@ -31,6 +31,7 @@ public class Pause : MonoBehaviour {
 
 	public void sair(){
 		Time.timeScale = 1.0f;	//Seta para o jogo continuar funcionando mesmo depois de sair para o menu principal
+		AudioListener.pause = false;
 		SceneManager.LoadScene ("menuPrincipal",LoadSceneMode.Single);
 	}
 
