@@ -7,10 +7,23 @@ public class EnemyController : Corpo {
 	private Vector3 rotacaoAUX;		//Variavel serve para testarmos para qual lado o tanque esta virando
 	private Vector3 posicao;
 	private Transform target;
+	private GameObject barraRecursos;
 
 	public override void Start(){		
 		guia = transform.Find("guia").gameObject;
+		barraRecursos = transform.GetChild (2).gameObject;
 		base.Start ();
+	}
+
+	void Update(){
+		if(barraRecursos.GetComponent<BarraRecursos>().getVida() <= 0){
+			Destroy (gameObject,5);
+			gameObject.SetActive(false);
+		}
+
+		if(this.speed != 0 && barraRecursos.GetComponent<BarraRecursos>().getCombustivel() <= 0){
+			this.speed = 0;
+		}
 	}
 
 	protected override void controlador(){		

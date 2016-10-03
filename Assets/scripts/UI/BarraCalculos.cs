@@ -15,7 +15,6 @@ public class BarraCalculos : MonoBehaviour {
 
 	void inserirTexto(){
 		texto.GetComponent<Text> ().text = parCalculos[0]+"+"+parCalculos[1];
-		Debug.Log (texto.GetComponent<Text> ().text);
 	}
 
 }

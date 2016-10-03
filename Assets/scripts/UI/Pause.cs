@@ -7,6 +7,10 @@ public class Pause : MonoBehaviour {
 	public GameObject canvas;
 	public GameObject miniMapa;
 
+	void Start(){
+		AudioListener.pause = false;
+	}
+
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Escape)){			
 			if(miniMapa.activeSelf){ //Caso o minimapa esteja aberto

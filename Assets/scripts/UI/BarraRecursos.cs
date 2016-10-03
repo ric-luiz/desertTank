@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BarraRecursos : MonoBehaviour {
 
@@ -7,17 +8,20 @@ public class BarraRecursos : MonoBehaviour {
 	public float MaxCombustivel;
 	public float gastoCombustivelMin;
 	public float gastoCombustivelMax;
-	private float vida;
-	private float combustivel;
-	private GameObject lifeBar;
-	private GameObject gasBar;
+	public float acrescimoVida;
+	public float acrescimoCombustivel;
+	protected float vida;
+	protected float combustivel;
+	protected GameObject lifeBar;
+	protected GameObject gasBar;
 
-	void Start () {
+
+	protected void Start () {
 		vida = MaxVida;
 		combustivel = MaxCombustivel;
 		lifeBar = transform.GetChild(0).Find("Vida").gameObject;	//Pega a barra de vida
 		gasBar = transform.GetChild(1).Find("Combustivel").gameObject;	//Pega a barra de combustivel
-	}
+	}		
 
 	public void retirarVida(){
 		vida -= 10.0f;
@@ -47,11 +51,27 @@ public class BarraRecursos : MonoBehaviour {
 		diminuirBarraCombustivel (valor);
 	}
 
-	void diminuirBarraVida(float valor){
+	protected void diminuirBarraVida(float valor){
 		lifeBar.transform.localScale = new Vector3(valor,lifeBar.transform.localScale.y,lifeBar.transform.localScale.z);
 	}
 
-	void diminuirBarraCombustivel(float valor){
+	protected void diminuirBarraCombustivel(float valor){
 		gasBar.transform.localScale = new Vector3(valor,gasBar.transform.localScale.y,gasBar.transform.localScale.z);
+	}
+
+	public void incrementarVida(){
+		this.vida += acrescimoVida;
+	}
+
+	public void incrementarCombustivel(){
+		this.combustivel += acrescimoCombustivel;
+	}
+
+	public float getVida(){
+		return vida;
+	}
+
+	public float getCombustivel(){
+		return combustivel;
 	}
 }
