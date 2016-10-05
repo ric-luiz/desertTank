@@ -331,7 +331,7 @@ GameObject:
   - 114: {fileID: 114000013686451712}
   - 114: {fileID: 114000011546651120}
   - 114: {fileID: 114000012971387668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: painelCalculoIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   - 224: {fileID: 224000012998051312}
   - 222: {fileID: 222000012691352580}
   - 114: {fileID: 114000013362341186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: textoCalculo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   - 224: {fileID: 224000011902831122}
   - 222: {fileID: 222000013057443198}
   - 114: {fileID: 114000012171676762}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
