@@ -8,6 +8,7 @@ public class CriadorBandeira : MonoBehaviour {
 	private GameObject[] bandeirasModel;
 	private GameObject bandeiraTarget;	//A bandeira que é alvo para o jogador pegar
 	public Text texto;
+	public GameObject canvas;
 
 	void Start () {
 		criarBandeiras ();
@@ -40,4 +41,26 @@ public class CriadorBandeira : MonoBehaviour {
 	public GameObject getBandeiraTarget(){
 		return bandeiraTarget;
 	}
+
+	void Update(){
+		verificarBandeirasAtivas ();
+	}
+
+	//Se todas as bandeiras estiverem desativadas o jogo acaba com o jogador como vencedor
+	void verificarBandeirasAtivas(){
+		bool bandeiraAtiva = false;
+		foreach(GameObject g in bandeirasModel){
+			if(g.activeSelf){				
+				bandeiraAtiva = true;
+				break;
+			}
+		}
+
+		if(!bandeiraAtiva){
+			canvas.SetActive (true);
+			Time.timeScale = 0.0f;
+			AudioListener.pause = true;
+		}
+	}
+
 }

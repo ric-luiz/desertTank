@@ -56,6 +56,6 @@ public class Bandeira : MonoBehaviour {
 	void entregarPowerUps(){
 		barraRecursos.GetComponent<BarraRecursos>().incrementarVida();
 		barraRecursos.GetComponent<BarraRecursos>().incrementarCombustivel();
-	}
+	}		
 		
 }
